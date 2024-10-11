@@ -1,4 +1,35 @@
 /* Your Code Here */
+function createEmployeeRecord(employeeArray) {
+    return {
+        firstName: employeeArray[0],
+        familyName: employeeArray[1],
+        title: employeeArray[2],
+        payPerHour: employeeArray[3],
+        timeInEvents: [],
+        timeOutEvents: []
+    };
+}
+function createEmployeeRecords(employeeArrays) {
+    return employeeArrays.map(employeeArray => createEmployeeRecord(employeeArray));
+}
+
+function createTimeInEvent(employeeRecord, datestamp) {
+    console.log(datestamp)
+    const [date, hour] = datestamp.split(' '); 
+    const timeInEvent = {
+        type: "TimeIn",
+        hour: parseInt(hour, 10), 
+        date: date
+    } 
+
+    console.log(timeInEvent)
+    employeeRecord.timeInEvents.push(timeInEvent);  
+    return employeeRecord;
+}
+
+let bpRecord = createEmployeeRecord(["Byron", "Poodle", "Mascot", 3]);
+createTimeInEvent(bpRecord, "2014-02-28 1400");
+
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
